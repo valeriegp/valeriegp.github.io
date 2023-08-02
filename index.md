@@ -16,11 +16,11 @@ Fahad Dogar is an associate professor in the Department of Computer Science depa
 
 ## About My Project
 
-The design and development of a real game VR experience intended for autistic individuals as a therapy tool to practice scenarios that are not routine and that can cause stress and anxiety.  Special attention is being given to identifying methods of bridging therapy and game practices into a cohesive experience.
+The design and development of a real game VR experience intended for autistic individuals as a therapy tool to practice scenarios that are not routine and that can cause stress and anxiety. The scenario of visiting the airport has been chosen as the focus for this project, as it involves several areas of potential interest such as waiting in line, going through security, getting tickets, etc.
 
-The scenario of visiting the airport has been chosen as the focus for this project, as it involves several areas of potential focus such as waiting in line, going through security, getting tickets, etc.  The game aspect of this project will be based on a "choose your own adventure" experience where clear goals and rewards are built into the experience. The use of a communly used therapeutic practice of social stories, for autistic individuals, will be incorporated into the design of this project.
+The game aspect of this project will be based on a “choose your own adventure” experience with clear goals and rewards. The use of Social Stories, which are a commonly used and effective therapeutic practice designed for autistic communities and their families, will be incorporated into the overall design of this project.
 
-Primary areas of focus involve finding sustainable methods of customization, which is essential when designing technologies for the autistic community, tracking/monitoring engagement and progress in order to be able to eventaully assess the overall effectiveness of this project, and designing for the potential of longer term engagement of users through gamification and aesthetics.  The use of AI will be explored in order to aid in the successful implementation of the first two areas of focus.
+Primary areas of focus involve finding extensive and efficient methods of customization (which is an essential feature when designing technologies for the autistic community specifically) through design and through the use of AI, tracking/monitoring engagement and progress in order to be able to eventually assess the overall effectiveness of this project (as this data could prove useful for related and future projects), and designing for longer term engagement of users through gamification and aesthetics.
 
 [My Final Report](files/finalreport.pdf)
 
