@@ -18,7 +18,7 @@ Fahad Dogar is an associate professor in the Department of Computer Science depa
 
 The design and development of a real game VR experience intended for autistic individuals as a therapy tool to practice scenarios that are not routine and that can cause stress and anxiety. The scenario of visiting the airport has been chosen as the focus for this project, as it involves several areas of potential interest such as waiting in line, going through security, getting tickets, etc.
 
-The game aspect of this project will be based on a “choose your own adventure” experience with clear goals and rewards. The use of Social Stories, which are a commonly used and effective therapeutic practice designed for autistic communities and their families, will be incorporated into the overall design of this project.
+The game aspect of this project will be based on a “choose your own adventure” experience with clear goals and rewards. The use of Social Stories, which are a commonly used and effective therapeutic practice designed for autistic communities and their families, will be incorporated into this project as a prelude to each of the varied airport scenes.
 
 Primary areas of focus involve finding extensive and efficient methods of customization (which is an essential feature when designing technologies for the autistic community specifically) through design and through the use of AI, tracking/monitoring engagement and progress in order to be able to eventually assess the overall effectiveness of this project (as this data could prove useful for related and future projects), and designing for longer term engagement of users through gamification and aesthetics.
 
