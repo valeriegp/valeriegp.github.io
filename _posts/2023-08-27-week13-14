@@ -3,3 +3,8 @@ layout: post
 title: Weeks 13 and 14
 ---
 
+I have now put together the first of four places/scenes for *CYO Airport Story*. I decided to begin with the ticketing area because the challenges that will be needed to be worked through here will carry well to the remaining 3 scenes. The ticketing area is likely the most complex because of the amount of characters that will be needed to fill the scene and because of the differences in either being able to get tickets from a kiosk or from an individual.
+
+So far, I have the whole ticketing scene laid out and I have a working first person perspective, where a user can navigate through the space through mouse and keyboard input. My scene is very simple and does not yet include any textures, though the way that it is built, it will be easy to update the artwork of the current objects within the scene.
+
+After building this scene, I also looked into what kinds of options that I might have for creating varied scenes and I have determined that I could potentially use AI to generate varied textures that could wrap around my objects. I could also design several variations of my current layout of objects.
