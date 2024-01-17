@@ -3,10 +3,10 @@
 #
 
 # Name of your site (displayed in the header)
-name: CYOAirport Story (Choose Your Own Airport Story)
+name: CYO Airport Story (Choose Your Own Airport Story)
 
 # Short bio or description (displayed in the header)
-description: An in-progress serious game airport simulation that can be experienced over the web or as a VR application. It is intended as a tool to practice going to the airport, which is not a routine or easily practiced scenario that can cause an especially high degree of stress amongst anxiety prone and neurodivergent individuals. The goal is that by using <i>CYO Airport Story</i>, users will have an easier time visiting and using airports.
+description: An in-progress serious game airport simulation that can be experienced over the web or as a VR application. <i>CYO Airport Story</i> is intended as a tool to practice going to the airport, which is not a routine or easily practiced scenario that can cause an especially high degree of stress amongst anxiety prone and neurodivergent individuals. The goal is that by using <i>CYO Airport Story</i>, users will have an easier time visiting and using airports.
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://valeriegp.github.io/images/me.png
