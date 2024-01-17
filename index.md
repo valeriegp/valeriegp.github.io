@@ -17,7 +17,7 @@ Valerie Guinn Polgar is a master's student in the Department of Computer Science
 ## About My Project
 
 There is a need for tools/interventions that help autistic (or neurodivergent) individuals to be able to prepare to visit public spaces that cause high levels of stress and anxiety, such as the airport. While there are certain efforts that have gone into making the airport more accessible for neurodiverse populations, such as the addition of dedicated quiet spaces and programs like “Wings for Autism”, there is a need for more accessible tools. This need can be partially met through the use of an airport simulation, in allowing individuals to practice going to the airport in a more accessible and cost-efficient manner. CYO (Choose Your Own) Airport story, a serious game airport simulation, is proposed as one such simulation that could benefit anyone with airport-related anxieties (though it is primarily designed for neurodiverse populations). It incorporates the social model of disability in its design, instead of the more commonly used medical model of disability that uses approaches such as Cognitive Behavioral Therapy (CBT) and exposure therapy, which are controversial when used within the autistic community. Special effort has been made in designing this tool that can serve any individual who would benefit from practicing going to the airport (to ease airport-related anxieties) in a manner that gives the user full agency over its use, and within the simulation itself.
-<img src="/images/cyoView5.png">
+<img src="/images/cyoView5.png" width="100">
 
 [My Final Report](files/finalreport.pdf)
 
