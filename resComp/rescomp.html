@@ -1,0 +1,454 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+<TITLE>Responsive Composition: A Program that uses WebGazer.js</TITLE>
+
+<script src="webgazer.js"></script>
+
+<script>
+/*
+Valerie Guinn Polgar and Tom Barnett_Young
+valerie.polgar@tufts.edu, Thomas.Barnett_Young@tufts.edu
+CS86 Assignment Nonwimp2
+December 9, 2022
+ */
+
+// Global variables to keep track of gaze (looking at each quadrant)
+var red_glances = 0;
+var green_glances = 0;
+var yellow_glances = 0;
+var blue_glances = 0;
+var total_glances = 0;
+
+// Global variables to store window dimensions
+var window_width = 0;
+var window_height = 0;
+
+// Global variables to store mouse location
+var mouse_x = 0;
+var mouse_y = 0;
+
+// Global variables to store maximum, and minimum, gaze coordinates (unsuccessful attempt to get a sense of what size Webgazer.js thinks the window is)
+var gaze_x_max = 0;
+var gaze_x_min = 0;
+var gaze_y_max = 0;
+var gaze_y_min = 0;
+
+/*
+ * A program that uses WebGazer.js. and that was initially adapted from Professor Jacob's example
+ * 
+ * Download and put in same folder as Webgazer.js.
+ *
+ * IMPORTANT: Do a bunch of clicks where you are looking at the cursor, in various
+ * locations on the screen, to calibrate the program.
+ * At least a dozen, ideally more like two dozen, at various spots you are
+ * looking at on the screen. (Look at cursor when you click.)
+ * Try to get a good variety, all over the screen.
+ *
+ * Then, just look around as you please. Notice the boxes grow in each rectangle
+ * as you look in the rectangle.
+ *
+ * Based on https://webgazer.cs.brown.edu/demo.html by Jeff Huang
+ *
+ * Must run on a remote server, and access via https not http. 
+ * Must download webgazer.js from http://webgazer.cs.brown.edu and put it where above 'script src=' statement will find it. 
+ * Can ignore alert box that complains about webGL. 
+ *
+ * Screen is 1385 by 787
+ */
+
+ // Attach an event listener to the document to listen for mousemove events
+ document.addEventListener('mousemove', function(event) {
+   // Get the x-coordinate of the mouse
+   mouse_x = event.clientX;
+
+   // Get the y-coordinate of the mouse
+   mouse_y = event.clientY;
+
+   // Output the x-coordinate and y-coordinate of the mouse to the console
+   console.log('Mouse position: (' + x + ', ' + y + ')');
+ });
+ 
+/*
+ * Called whenever we get new gaze data
+ * data = object containing an x and y key which are the x and y prediction coordinates (no bounds limiting)
+ * clock = elapsed time in milliseconds since webgazer.begin() was called
+ */
+function gaze (data, clock) { 
+    const delay = 400 // ms
+
+    if (data==null) return;
+
+    // Showing the coords on screen in real-time, for coding purposes as I go
+    target1.textContent = data.x
+    target2.textContent = data.y
+    
+    if (data.x > gaze_x_max)
+    {
+        gaze_x_max = data.x;
+    }
+    if (data.x < gaze_x_min)
+    {
+        gaze_x_min = data.x;
+    }
+    if (data.y > gaze_y_max)
+    {
+        gaze_y_max = data.y;
+    }
+    if (data.y < gaze_y_min)
+    {
+        gaze_y_min = data.y;
+    }
+    
+    window_width = window.innerWidth;
+    window_height = window.innerHeight;
+    
+    // if gaze is in red quadrant, increment red_glances variable... and so on
+    if (data.x > window_width - 950 && data.x < window_width - 525 && data.y > 50 && data.y < 325) {
+        red_glances += 4;
+    } else {
+        red_glances -= 1;
+        if (red_glances <= 10) {
+            red_glances = 10;
+        }
+        if (red_glances >= 300) {
+            red_glances--;
+        }
+    }
+    if (data.x > window_width - 475 && data.x < window_width - 50 && data.y > 50 && data.y < 325) {
+        green_glances += 4;
+    } else {
+        green_glances -= 1;
+        if (green_glances <= 10) {
+            green_glances = 10;
+        }
+        if (green_glances >= 300) {
+            green_glances--;
+        }
+    }
+    if (data.x > window_width - 475 && data.x < window_width - 50 && data.y > 375 && data.y < 650) {
+        yellow_glances += 4;
+    } 
+    else {
+        yellow_glances -= 1;
+        if (yellow_glances <= 10) {
+            yellow_glances = 10;
+        }
+        if (yellow_glances >= 300) {
+            yellow_glances--;
+        }
+    }
+    if (data.x > window_width - 950 && data.x < window_width - 525 && data.y > 375 && data.y < 650) {
+        blue_glances += 4;
+    } 
+    else {
+        blue_glances -= 1;
+        if (blue_glances <= 10) {
+            blue_glances = 10;
+        }
+        if (blue_glances >= 300) {
+            blue_glances--;
+        }
+    }
+
+    total_glances++;
+    
+    //increase width/height for red quadrant responsive elements
+    document.getElementById("reddot").style.width = red_glances + "px";
+    document.getElementById("reddot").style.height = red_glances + "px";
+    document.getElementById("greenSquare").style.width = red_glances + "px";
+    document.getElementById("greenSquare1").style.height = red_glances + "px";
+    document.getElementById("reddot1").style.width = red_glances + "px";
+    document.getElementById("reddot1").style.height = red_glances + "px";
+    document.getElementById("reddot2").style.width = red_glances + "px";
+    document.getElementById("reddot2").style.height = red_glances + "px";
+    document.getElementById("reddot3").style.width = red_glances + "px";
+    document.getElementById("reddot3").style.height = red_glances + "px";
+    document.getElementById("blueMove").style.width = red_glances + "px";
+    document.getElementById("blueMove1").style.width = red_glances + "px";
+    document.getElementById("blackSquare").style.width = red_glances + "px";
+    document.getElementById("blackSquare").style.height = red_glances + "px";
+    
+    //increase width/height for green quadrant responsive elements
+    document.getElementById("greendot").style.width = green_glances + "px";
+    document.getElementById("greendot").style.height = green_glances + "px";
+    document.getElementById("redSquare").style.width = green_glances + "px";
+    document.getElementById("redSquare1").style.height = green_glances + "px";
+    document.getElementById("greendot1").style.width = green_glances + "px";
+    document.getElementById("greendot1").style.height = green_glances + "px";
+    document.getElementById("greendot2").style.width = green_glances + "px";
+    document.getElementById("greendot2").style.height = green_glances + "px";
+    document.getElementById("greendot3").style.width = green_glances + "px";
+    document.getElementById("greendot3").style.height = green_glances + "px";
+    document.getElementById("yellowMove").style.width = green_glances + "px";
+    document.getElementById("yellowMove1").style.width = green_glances + "px";
+    document.getElementById("blackSquare1").style.width = green_glances + "px";
+    document.getElementById("blackSquare1").style.height = green_glances + "px";
+    
+    //increase width/height for yellow quadrant responsive elements
+    document.getElementById("yellowdot").style.width = yellow_glances + "px";
+    document.getElementById("yellowdot").style.height = yellow_glances + "px";
+    document.getElementById("blueSquare").style.width = yellow_glances + "px";
+    document.getElementById("blueSquare1").style.height = yellow_glances + "px";
+    document.getElementById("yellowdot1").style.width = yellow_glances + "px";
+    document.getElementById("yellowdot1").style.height = yellow_glances + "px";
+    document.getElementById("yellowdot2").style.width = yellow_glances + "px";
+    document.getElementById("yellowdot2").style.height = yellow_glances + "px";
+    document.getElementById("yellowdot3").style.width = yellow_glances + "px";
+    document.getElementById("yellowdot3").style.height = yellow_glances + "px";
+    document.getElementById("greenMove").style.width = yellow_glances + "px";
+    document.getElementById("greenMove1").style.width = yellow_glances + "px";
+    document.getElementById("blackSquare2").style.width = yellow_glances + "px";
+    document.getElementById("blackSquare2").style.height = yellow_glances + "px";
+    
+    //increase width/height for blue quadrant responsive elements
+    document.getElementById("bluedot").style.width = blue_glances + "px";
+    document.getElementById("bluedot").style.height = blue_glances + "px";
+    document.getElementById("yellowSquare").style.width = blue_glances + "px";
+    document.getElementById("yellowSquare1").style.height = blue_glances + "px";
+    document.getElementById("bluedot1").style.width = blue_glances + "px";
+    document.getElementById("bluedot1").style.height = blue_glances + "px"
+    document.getElementById("bluedot2").style.width = blue_glances + "px";
+    document.getElementById("bluedot2").style.height = blue_glances + "px"
+    document.getElementById("bluedot3").style.width = blue_glances + "px";
+    document.getElementById("bluedot3").style.height = blue_glances + "px";
+    document.getElementById("redMove").style.width = blue_glances + "px";
+    document.getElementById("redMove1").style.width = blue_glances + "px";
+    document.getElementById("blackSquare3").style.width = blue_glances + "px";
+    document.getElementById("blackSquare3").style.height = blue_glances + "px";
+}
+
+// Do basic stuff to get the window running - unchanged from example code
+window.onload = function() {
+    webgazer.setGazeListener(gaze) 
+        .showPredictionPoints(true) /* shows a square every 100 milliseconds where current prediction is */ 
+    .begin()
+};
+
+</script>
+
+<!-- Setting out the basic details of the style of the bars used in each quadrant -->
+<style>
+.dot {
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+}
+</style>
+</head>
+
+<BODY LANG="en-US" LINK="#0000ff" DIR="LTR">
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <p style="color:gray;"> &nbsp; <b>Responsive Composition:</b></p>
+    <p style="color:gray;"> &nbsp; Follow your mouse with your eyes and click </p> 
+    <p style="color:gray;"> &nbsp; on various locations in the window to calibrate </p> 
+    <p style="color:gray;"> &nbsp; the window to your eye movement before </p>
+    <p style="color:gray;"> &nbsp; viewing. </p>
+    <p style="color:gray;"> &nbsp; <i> Note: If you find that the tracker is off at </i></p>
+    <p style="color:gray;"> &nbsp; <i> any point, you may need to re-calibrate. </i></p>
+
+    <!-- red quadrant  -->
+    <div id="blueMove" style="position: fixed; background-color: blue; opacity: 0.4;
+    transform: rotate(90deg); right:500px; top: 25px">
+        <span class="dot"></span>
+    </div>
+    
+    <div id="reddot2" style="position: fixed; background-color: orange; opacity: 0.6; border-radius: 50%;
+    right:600px; top: 80px">
+        <span class="dot"></span>
+    </div>
+    
+    <div id="greenSquare" style="position: fixed; background-color: green; opacity: 0.4; 
+    right:475px; top: 165px">
+        <span class="dot"></span>
+    </div>
+    
+    <div id="reddot" style="position: fixed; background-color: green; opacity: 0.3; border-radius: 50%;
+    right:615px; top: 65px">
+        <span class="dot"></span>
+    </div>
+    
+    <div id="reddot1" style="position: fixed; background-color: red; opacity: 0.35; border-radius: 50%;
+    right:600px; top: 50px">
+        <span class="dot"></span>
+    </div>
+
+    <div id="greenSquare1" style="position: fixed; background-color: green; opacity: 0.5;
+    right: 715px; top: 0px">
+        <span class="dot"></span>
+    </div>
+    
+    <div id="reddot3" style="position: fixed; background-color: red; opacity: 0.4; border-radius: 50%;
+    right:630px; top: 80px">
+        <span class="dot"></span>
+    </div>
+
+    <div id="blueMove1" style="position: fixed; background-color: blue; opacity: 0.3;
+    transform: rotate(90deg); right: 600px; top: 320px">
+        <span class="dot"></span>
+    </div>
+
+    <div id="blackSquare2" style="position: fixed; background-color: black; opacity: 0.1; border-radius: 5%;
+    transform: rotate(90deg); right: 525px; top: 50px">
+        <span class="dot"></span>
+    </div>
+
+    <!-- green quadrant -->
+    <div id="yellowMove" style="position: fixed; background-color: orange; opacity: 0.4;
+    transform: rotate(90deg); right:30px; top: 25px">
+        <span class="dot"></span>
+    </div>
+    
+    <div id="greendot3" style="position: fixed; background-color: rgb(0, 100, 255); opacity: 0.5; border-radius: 50%;
+    right:165px; top: 80px">
+        <span class="dot"></span>
+    </div>
+    
+    <div id="greendot" style="position: fixed; background-color: red; opacity: 0.3; border-radius: 50%;
+    right: 150px; top: 65px">
+        <span class="dot"></span>
+    </div>
+
+    <div id="redSquare1" style="position: fixed; background-color: red; opacity: 0.4;
+    right: 250px; top: 0px">
+        <span class="dot"></span>
+    </div>
+    
+    <div id="greendot1" style="position: fixed; background-color: green; opacity: 0.35; border-radius: 50%;
+    right:165px; top: 50px">
+        <span class="dot"></span>
+    </div>
+
+    <div id="redSquare" style="position: fixed; background-color: red; opacity: 0.5;
+    right: 0px; top: 165px">
+        <span class="dot"></span>
+    </div>
+    
+    <div id="greendot2" style="position: fixed; background-color: green; opacity: 0.4; border-radius: 50%;
+    right:135px; top: 80px">
+        <span class="dot"></span>
+    </div>
+
+    <div id="blackSquare3" style="position: fixed; background-color: black; opacity: 0.1; border-radius: 5%;
+    transform: rotate(90deg); right:55px; top: 50px">
+        <span class="dot"></span>
+    </div>
+
+    <!-- yellow quadrant -->
+    <div id="blackSquare" style="position: fixed; background-color: black; opacity: 0.1; border-radius: 5%;
+    right: 50px; top: 375px">
+        <span class="dot"></span>
+    </div>
+
+    <div id="yellowMove1" style="position: fixed; background-color: orange; opacity: 0.3;
+    transform: rotate(90deg); right: 120px; top: 320px">
+        <span class="dot"></span>
+    </div>
+    
+    <div id="yellowdot1" style="position: fixed; background-color: red; opacity: 0.45; border-radius: 50%;
+    right:165px; top: 385px">
+        <span class="dot"></span>
+    </div>
+
+    <div id="blueSquare" style="position: fixed; background-color: rgb(0, 100, 255); opacity: 0.4;
+    right: 0px; top: 500px">
+        <span class="dot"></span>
+    </div>
+    
+    <div id="greenMove" style="position: fixed; background-color: green; opacity: 0.4;
+    transform: rotate(90deg); right: 30px; top: 350px">
+        <span class="dot"></span>
+    </div>
+    
+    <div id="yellowdot" style="position: fixed; background-color: rgb(0, 100, 255); opacity: 0.4; border-radius: 50%;
+    right: 150px; top: 400px">
+        <span class="dot"></span>
+    </div>
+
+    <div id="yellowdot2" style="position: fixed; background-color: orange; opacity: 0.45; border-radius: 50%;
+    right:135px; top: 385px">
+        <span class="dot"></span>
+    </div>
+
+    <div id="blueSquare1" style="position: fixed; background-color: rgb(0, 100, 255); opacity: 0.5;
+    right: 250px; top: 325px">
+        <span class="dot"></span>
+    </div>
+
+    <div id="yellowdot3" style="position: fixed; background-color: orange; opacity: 0.5; border-radius: 50%;
+    right:165px; top: 415px">
+        <span class="dot"></span>
+    </div>
+
+    <div id="greenMove1" style="position: fixed; background-color: green; opacity: 0.3;
+    transform: rotate(90deg); right: 120px; top: 640px">
+        <span class="dot"></span>
+    </div>
+    
+    <!-- blue quadrant -->
+    <div id="blackSquare1" style="position: fixed; background-color: black; opacity: 0.1; border-radius: 5%;
+    right: 525px; top: 375px">
+        <span class="dot"></span>
+    </div>
+
+    <div id="redMove" style="position: fixed; background-color: red; opacity: 0.4;
+    transform: rotate(90deg); right:500px; top: 350px">
+        <span class="dot"></span>
+    </div>
+    
+    <div id="bluedot1" style="position: fixed; background-color: green; opacity: 0.5; border-radius: 50%;
+    right:600px; top: 385px">
+        <span class="dot"></span>
+    </div>
+
+    <div id="yellowSquare1" style="position: fixed; background-color: orange; opacity: 0.6;
+    right:715px; top: 325px">
+        <span class="dot"></span>
+    </div>
+    
+    <div id="bluedot" style="position: fixed; background-color: orange; opacity: 0.5; border-radius: 50%;
+    right:615px; top: 400px">
+        <span class="dot"></span>
+    </div>
+
+    <div id="bluedot2" style="position: fixed; background-color: rgb(0, 100, 255); opacity: 0.3; border-radius: 50%;
+    right:600px; top: 415px">
+        <span class="dot"></span>
+    </div>
+
+    <div id="yellowSquare" style="position: fixed; background-color: orange; opacity: 0.7;
+    right:475px; top: 500px">
+        <span class="dot"></span>
+    </div>
+
+    <div id="bluedot3" style="position: fixed; background-color: rgb(0, 100, 255); opacity: 0.4; border-radius: 50%;
+    right:630px; top: 385px">
+        <span class="dot"></span>
+    </div>
+
+    <div id="redMove1" style="position: fixed; background-color: red; opacity: 0.3;
+    transform: rotate(90deg); right:600px; top: 640px">
+        <span class="dot"></span>
+    </div>
+    
+    <!-- Put the four colored quadrants on the screen -->
+    <div id="target1" style="position:absolute; border-style:solid; border-color:red; opacity: 0;
+    right:525px; top:50px; height:275px; width:425px">
+    </div>
+    
+    <div id="target2" style="position:absolute; border-style:solid; border-color:green; opacity: 0;
+    right:50px; top:50px; height:275px; width:425px">
+    </div>
+    
+    <div id="target3" style="position:absolute; border-style:solid; border-color:orange; opacity: 0;
+    right:50px; top:375px; height:275px; width:425px">
+    </div>
+    
+    <div id="target4" style="position:absolute; border-style:solid; border-color:blue; opacity: 0;
+    right:525px; top:375px; height:275px; width:425px">
+    </div>
+    
+</BODY>
+</HTML>

@@ -1,0 +1,28 @@
+Valerie Guinn Polgar and Tom Barnett_Young
+valerie.polgar@tufts.edu, Thomas.Barnett_Young@tufts.edu
+December 9, 2022
+
+
+Instructions:
+To compile and run this program, open the "responsiveComposition_nonWimp2.html" file in any web browser.
+
+
+About:
+This program is a responsive composition meant to be enjoyed hands free and without any unnecessary
+effort from the user, beyond simply viewing the dynamic visuals.  There are, however, some instructions (listed under the camera view) of how to calibrate the window to viewer eye movement before viewing the composition.  This feature is made possible through Webgazer.js, and related documentation from its creators and from Professor Jacob. 
+
+The design of the composition is based off of the rule of thirds, which is a method of designing compositions by identifying the 4 potentially most engaging focal points and choosing one of these focal points to build an image around.  As our program identifies an area that the user is engaging with, it changes through size and movement, in order to dynamically arrange one of these four focal points.  While the main goal in most static compositions is to guide a viewers eye movement through carefully arranged visual elements, here we instead allow the viewer's eyemovements to arrange the visual elements so that the composition itself is being guided by the user's eye movements.  
+
+Finally, we incorporated basic elements of design, such as shape and color, in order to create a framework for a constantly changing composition.  To make these elements more visually interesting, we utilized transparency within our colors--adding more depth.  We also turned to basic rules of color theory and balance, when deciding how and where to arrange the various dynamic elements in our final program.
+
+
+Inheritance:
+Our program has a .dot class, which sets the initial size and display style for our many dot objects.
+
+
+*Notes:
+-As per the instructions from the provided Grading Rubric, we have included the "details of arriving at final design", "how we implemented the main features", "modifications needed", "good aspects of UI design", "interesting/unusual technical features/issues", "interesting aspects of UI design", and "instructions of how to run program" in a separate pdf.
+
+-Our UI design is meant to be as simple and hands free as possible.  While we include some instructions for setting up the calibration between the window and user eye movement, the only interactions that occur outside of this initial setup are simply visual.  For this reason, our program does not include the use of any buttons or panels of any kind, as we feel that this would have taken away from the main goal of this project.
+
+-While working together, we noticed that our screen coordinates did not match up (even though we have the same computer!).  We made some updates and did what we could to work off of width and height dimensions, as opposed to hard-coded values, which seemed to solve the problem for us.  While we believe this problem to be resolved, we cannot guarantee that the eye tracking will be as precise on your computer as we were able to get it to work on ours.
